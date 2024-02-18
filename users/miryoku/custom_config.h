@@ -17,12 +17,16 @@ MIRYOKU_X(MEDIA,  "Media") \
 MIRYOKU_X(NUM,    "Num") \
 MIRYOKU_X(SYM,    "Sym") \
 MIRYOKU_X(FUN,    "Fun") \
-MIRYOKU_X(ACC,    "Acc") \
-MIRYOKU_X(GAME,   "Game")
-//MIRYOKU_X(MAUTO,  "MAuto")
+MIRYOKU_X(ACC,    "Acc")
 
 // Enable Unicode symbols with WinCompose
 #define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE
+
+// Enable pointing device modes
+#define POINTING_DEVICE_MODES_ENABLE
+#define POINTING_DEVICE_MODES_INVERT_Y
+#define POINTING_CARET_DIVISOR_V 16
+#define POINTING_CARET_DIVISOR_H 32
 
 // Enable caps word when both shift keys are pressed
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
@@ -44,29 +48,16 @@ AE_U,              U_NP,              SZ_U,             U_NP,               U_NP
 U_NP,              U_NP,              X(SNEK),          U_NP,               U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP, \
 U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP
 
-// Gaming layer
-#define MIRYOKU_ALTERNATIVES_GAME \
-KC_TAB,            KC_Q,              KC_W,             KC_E,               KC_R,              KC_T,              KC_Y,             KC_U,               KC_I,              KC_ESC, \
-KC_LSFT,           KC_A,              KC_S,             KC_D,               KC_F,              KC_G,              KC_BTN1,          KC_BTN2,            U_NP,              LT(U_NUM, KC_BTN3), \
-KC_LCTL,           KC_Z,              KC_X,             KC_C,               KC_V,              KC_B,              KC_N,             KC_M,               U_NP,              KC_ENT, \
-U_NP,              U_NP,              KC_ESC,           KC_SPC,             KC_LALT,           U_NP,              U_NP,             U_NP,               U_NP,              U_NP
-
-
 // Accent layer mapping
 #define MIRYOKU_LAYERMAPPING_ACC MIRYOKU_MAPPING
 #define MIRYOKU_LAYER_ACC MIRYOKU_ALTERNATIVES_ACC
 
-#define MIRYOKU_LAYERMAPPING_GAME MIRYOKU_MAPPING
-#define MIRYOKU_LAYER_GAME MIRYOKU_ALTERNATIVES_GAME
-
 // Mouse layer with dragscroll
 #define MIRYOKU_LAYER_MOUSE \
-U_NA,              M2CTL,             M2CTL,             M2CTL,             U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+U_NA,              U_NA,              U_NA,              PM_TG(PM_CRT),     U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
 U_NA,              KC_BTN2,           KC_BTN3,           KC_BTN1,           DRG_TOG,           DPI_MOD,           KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
-U_NA,              OSM(MOD_LSFT),     OSM(MOD_LSFT),     OSM(MOD_LSFT),     SNP_TOG,           DPI_RMOD,          KC_WH_L,           KC_WH_D,           KC_WH_U,           KC_WH_R,           \
+OSM(MOD_LGUI),     OSM(MOD_LALT),     OSM(MOD_LCTL),     OSM(MOD_LSFT),     SNP_TOG,           DPI_RMOD,          KC_WH_L,           KC_WH_D,           KC_WH_U,           KC_WH_R,           \
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_ENT,            KC_BSPC,           KC_BTN3,           U_NP,              U_NP
-
-//#define MIRYOKU_LAYERMAPPING_MAUTO MIRYOKU_MAPPING
 
 #define MIRYOKU_LAYER_BASE \
 KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,           \
