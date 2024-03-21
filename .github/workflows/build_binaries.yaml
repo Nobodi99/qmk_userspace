@@ -11,7 +11,7 @@ jobs:
     uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
     with:
       qmk_repo: Nobodi99/qmk_firmware
-      qmk_ref: develop
+      qmk_ref: dev_pointing_devices_modes
 
   publish:
     name: 'QMK Userspace Publish'
