@@ -79,7 +79,9 @@ const uint32_t PROGMEM unicode_map[] = {
 enum custom_keycodes {
     GER_AE = SAFE_RANGE,
     GER_OE,
-    GER_UE
+    GER_UE,
+    GER_EUR,
+    GER_SZ
 };
 
 char *alt_codes[][2] = {
@@ -95,6 +97,14 @@ char *alt_codes[][2] = {
         SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_4)SS_TAP(X_KP_6)), // Alt+0252 → ü
         SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_1)SS_TAP(X_KP_4)), // Alt+0220 → Ü
     },
+    {
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_1)SS_TAP(X_KP_2)SS_TAP(X_KP_8)), // Alt+0252 → €
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_1)SS_TAP(X_KP_6)SS_TAP(X_KP_3)), // Alt+0220 → £
+    },
+    {
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_2)SS_TAP(X_KP_3)), // Alt+0252 → ß
+        SS_LALT(SS_TAP(X_KP_7)SS_TAP(X_KP_8)SS_TAP(X_KP_3)SS_TAP(X_KP_8)), // Alt+0220 → ẞ
+    },
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
@@ -105,7 +115,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     switch (keycode) {
 		case GER_AE:
 		case GER_OE:
-		case GER_UE: {
+		case GER_UE:
+        case GER_EUR:
+        case GER_SZ: {
 			uint16_t index = keycode - GER_AE;
 			uint8_t shift = get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
 
