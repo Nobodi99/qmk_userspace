@@ -75,3 +75,51 @@ const uint32_t PROGMEM unicode_map[] = {
     [EUR] = 0x20AC,
     [SNEK] = 0x1F40D,
 };
+
+enum custom_keycodes {
+    GER_AE = SAFE_RANGE,
+    GER_OE,
+    GER_UE
+};
+
+char *alt_codes[][2] = {
+    {
+		SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_2)SS_TAP(X_KP_8)), // Alt+0228 → ä
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_1)SS_TAP(X_KP_9)SS_TAP(X_KP_6)), // Alt+0196 → Ä
+    },
+    {
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_4)SS_TAP(X_KP_6)), // Alt+0246 → ö
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_1)SS_TAP(X_KP_4)), // Alt+0214 → Ö
+    },
+    {
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_4)SS_TAP(X_KP_6)), // Alt+0252 → ü
+        SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_2)SS_TAP(X_KP_1)SS_TAP(X_KP_4)), // Alt+0220 → Ü
+    },
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+    if (!record->event.pressed)
+		return true;
+
+    switch (keycode) {
+		case GER_AE:
+		case GER_OE:
+		case GER_UE: {
+			uint16_t index = keycode - GER_AE;
+			uint8_t shift = get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT));
+
+			unregister_code(KC_LSFT);
+			unregister_code(KC_RSFT);
+
+			send_string(alt_codes[index][(bool)shift]);
+
+			if (shift & MOD_BIT(KC_LSFT)) register_code(KC_LSFT);
+			if (shift & MOD_BIT(KC_RSFT)) register_code(KC_RSFT);
+
+			return false;
+		}
+		default:
+			return true;
+    }
+}

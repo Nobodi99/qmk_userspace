@@ -45,7 +45,7 @@ MIRYOKU_X(ACC,    "Acc")
 #define MIRYOKU_ALTERNATIVES_ACC \
 U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP,              U_NP,             UE_U,               U_NP,              U_NP, \
 AE_U,              U_NP,              SZ_U,             U_NP,               U_NP,              U_NP,              U_NP,             X(EUR),             U_NP,              OE_U, \
-U_NP,              U_NP,              X(SNEK),          U_NP,               U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP, \
+U_NP,              U_NP,              GER_AE,           U_NP,               U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP, \
 U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP,              U_NP,             U_NP,               U_NP,              U_NP
 
 // Accent layer mapping
