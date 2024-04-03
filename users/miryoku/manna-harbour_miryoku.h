@@ -107,6 +107,13 @@ char *alt_codes[][2] = {
     },
 };
 
+bool led_update_user(led_t led_state) {
+	if (!led_state.num_lock) {
+		tap_code(KC_NUM_LOCK);
+	}
+	return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
     if (!record->event.pressed)
